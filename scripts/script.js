@@ -170,12 +170,14 @@ userInput.addEventListener('keypress', function (e) {
 function updateFavoriteButton(pokemon) {
     let favorites = getFromLocalStorage();
 
-    favoriteBtn.innerHTML = favorites.includes(pokemon)
-        ? `<svg class="w-[50px] h-[50px] fill-yellow-500" viewBox="0 0 24 24">
-            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-        </svg>`
-        : `<svg class="w-[50px] h-[50px] fill-[#D9D9D9]" viewBox="0 0 24 24">
+    if (favorites.includes(pokemon)) {
+        favoriteBtn.innerHTML = `<svg class="w-[50px] h-[50px] fill-yellow-500" viewBox="0 0 24 24">
             <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
         </svg>`;
+    } else {
+        favoriteBtn.innerHTML = `<svg class="w-[50px] h-[50px] fill-[#D9D9D9]" viewBox="0 0 24 24">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+        </svg>`;
+    }
 }
 randomBtn.click(); // Load a random Pokémon on page load
